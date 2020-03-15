@@ -5,5 +5,4 @@ localhost:8080/main - упрощенный rest controller, кнопка доб�
 #
 localhost:8080/testmessage - CRUD (к сожалению только через командную строку) https://gist.github.com/drucoder/a1d8576e1d15be38aae5bac3f914b874
 #
-So far, only the functionality of adding, deleting, editing text and displaying each message 
-separately using the browser's command line has been implemented.
+При нажатии на кнопку Sign out в main окне перейдете в окно авторизации созданного на основе springboot security
