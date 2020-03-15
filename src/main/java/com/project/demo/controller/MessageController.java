@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("testmessage")                    //Запрос
-public class MessageController{
+public class MessageController implements IDelete{
     private int counter = 4;
 
     private List <Map<String,String>> messages = new ArrayList<Map<String, String>>() {{
