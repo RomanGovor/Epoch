@@ -1,6 +1,9 @@
 package com.project.demo.controller;
 
+import com.project.demo.domain.Message;
 import com.project.demo.exeptions.NotFoundExceptions;
+import io.swagger.annotations.Api;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -10,6 +13,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("testmessage")                    //Запрос
+@Api(value = "/testmessage")
 public class MessageController implements IDelete{
     private int counter = 4;
 
@@ -27,6 +31,7 @@ public class MessageController implements IDelete{
             put("Text", "Message 3"); }
         });
     }};
+
     @GetMapping
     public List <Map<String,String>> list() {
         return messages;
@@ -60,6 +65,7 @@ public class MessageController implements IDelete{
 
         return messageFromDb;
     }
+
 
     @DeleteMapping("{id}")
     public void delete(@PathVariable String id) {

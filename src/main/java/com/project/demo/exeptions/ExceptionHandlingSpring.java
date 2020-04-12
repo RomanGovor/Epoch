@@ -24,6 +24,13 @@ public class ExceptionHandlingSpring implements ErrorController{                
             modelAndView.addObject("solution", "Сheck the data is correct");
             modelAndView.addObject("time", date);
         }
+        else if(response.getStatus() == HttpStatus.NO_CONTENT.value()) {         // Нету контента
+            modelAndView.setViewName("error");
+            modelAndView.addObject("errorCode", "Error 204");
+            modelAndView.addObject("errorMessage", "No content");
+            modelAndView.addObject("solution", "Restart program");
+            modelAndView.addObject("time", date);
+        }
         else if(response.getStatus() == HttpStatus.BAD_REQUEST.value()) {         // Плохой запрос
             modelAndView.setViewName("error");
             modelAndView.addObject("errorCode", "Error 400");

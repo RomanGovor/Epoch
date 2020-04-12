@@ -1,11 +1,9 @@
 package com.project.demo.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+                              /////
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)       //Идентификатор для различания записей в одной табличке
@@ -13,6 +11,18 @@ public class Message {
 
     private String text;                                  // Текст сообщения
     private String tag;                                   // Теги
+
+//    private User author;
+//
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
+
+
 
     public Message() {
     }

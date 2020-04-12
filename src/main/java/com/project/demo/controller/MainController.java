@@ -1,21 +1,25 @@
-package com.project.demo;
+package com.project.demo.controller;
 
 import com.project.demo.domain.Message;
 import com.project.demo.repos.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Entity;
+import java.util.Date;
 import java.util.Map;
 
+@Component
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     private MessageRepo messageRepo;
 
     @GetMapping("/")
     public String greeting(Map<String, Object> model) {
-
         return "greeting";
     }
 
@@ -27,6 +31,22 @@ public class GreetingController {
 
         return "main";
     }
+
+//    private byte num_of_auto_mes = 0;
+//    @Scheduled(fixedRate = 600 * 1000)
+//    public void createAutomaticMessage() throws InterruptedException{
+//
+//         Date date=java.util.Calendar.getInstance().getTime();
+//         num_of_auto_mes++;
+//
+//         String text_temp = "auto message creation test -" + num_of_auto_mes;
+//         String tag_temp =  "d: " + date;
+//
+//         Message message = new Message(text_temp, tag_temp);
+//         System.out.println("Message auto post - " + num_of_auto_mes);
+//
+//         messageRepo.save(message);
+//    }
 
     @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
@@ -71,6 +91,8 @@ public class GreetingController {
     }
 
 
+
+
     @PostMapping("/filter")
     public String filter(@RequestParam String filter, Map<String, Object> model) {
         Iterable<Message> messages;
@@ -86,7 +108,9 @@ public class GreetingController {
         return "main";
     }
 
-    @DeleteMapping("/delete")
+
+
+    @DeleteMapping("/delete")                     ///////
        public void delete(@RequestParam String delete, Map<String, Object> model) {
         Iterable<Message> messages;
 

@@ -10,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String usernanme;
+    private String username;
     private String password;
     private boolean active;
 
@@ -27,12 +27,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsernanme() {
-        return usernanme;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsernanme(String usernanme) {
-        this.usernanme = usernanme;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

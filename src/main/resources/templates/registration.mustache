@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Epoch security(Login)</title>
+    <title>Registration</title>
 </head>
 <body>
-<form action="/login" method="post">
+Добавление нового пользователя
+{{#message}}
+    {{message}}
+{{/message}}
+<form action="/registration" method="post">
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-    <div><input type="submit" value="Sign In"/></div>
+    <div><input type="submit" value="Add"/></div>
 </form>
-<a href="/registration">Добавить нового пользователя</a>
 </body>
 </html>
