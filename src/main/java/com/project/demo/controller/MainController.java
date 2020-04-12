@@ -32,7 +32,7 @@ public class MainController {
         return "main";
     }
 
-    private byte num_of_auto_mes = 0;
+    private byte num_of_auto_mes = 0; //
     @Scheduled(fixedRate = 600 * 1000)
     public void createAutomaticMessage() throws InterruptedException{
 
