@@ -32,21 +32,21 @@ public class MainController {
         return "main";
     }
 
-//    private byte num_of_auto_mes = 0;
-//    @Scheduled(fixedRate = 600 * 1000)
-//    public void createAutomaticMessage() throws InterruptedException{
-//
-//         Date date=java.util.Calendar.getInstance().getTime();
-//         num_of_auto_mes++;
-//
-//         String text_temp = "auto message creation test -" + num_of_auto_mes;
-//         String tag_temp =  "d: " + date;
-//
-//         Message message = new Message(text_temp, tag_temp);
-//         System.out.println("Message auto post - " + num_of_auto_mes);
-//
-//         messageRepo.save(message);
-//    }
+    private byte num_of_auto_mes = 0;
+    @Scheduled(fixedRate = 600 * 1000)
+    public void createAutomaticMessage() throws InterruptedException{
+
+         Date date=java.util.Calendar.getInstance().getTime();
+         num_of_auto_mes++;
+
+         String text_temp = "auto message creation test -" + num_of_auto_mes;
+         String tag_temp =  "d: " + date;
+
+         Message message = new Message(text_temp, tag_temp);
+         System.out.println("Message auto post - " + num_of_auto_mes);
+
+         messageRepo.save(message);
+    }
 
     @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
