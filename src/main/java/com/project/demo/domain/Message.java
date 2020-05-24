@@ -12,24 +12,39 @@ public class Message {
     private String text;                                  // Текст сообщения
     private String tag;                                   // Теги
 
-//    private User author;
-//
-//    public User getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(User author) {
-//        this.author = author;
-//    }
+    @ManyToOne(fetch = FetchType.EAGER)                                         // Одному пользователю много сообщений
+    @JoinColumn(name = "user_id")
+    private User author;
 
+    private String filename;
 
-
-    public Message() {
+    public String getFilename() {
+        return filename;
     }
 
-    public Message(String text, String tag) {
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public Message(String text, String tag, User user) {
+        this.author = user;
         this.text = text;
         this.tag = tag;
+    }
+
+    public String getAuthorName(){
+        return author != null ? author.getUsername() : "<none>";
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public Message() {
     }
 
     private void setText(String text) {

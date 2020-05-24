@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.4.RELEASE'
+	id 'org.springframework.boot' version '2.2.4.RELEASE'                 // 2.2.4
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 }
@@ -25,11 +25,17 @@ task execute(dependsOn:build) {
 	}
 }
 
+jar {
+	baseName = 'gs-managing-transactions'
+	version =  '0.1.0'
+}
+
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+
 	compile("org.springframework.boot:spring-boot-starter-actuator")
 	compile("org.springframework.boot:spring-boot-starter-jdbc")
 	compile("org.hibernate:hibernate-entitymanager:5.2.3.Final")
@@ -38,15 +44,23 @@ dependencies {
 	compile('org.postgresql:postgresql')
 	compile('org.projectlombok:lombok')
 	compile('javax.xml.bind:jaxb-api')
-	//compile('com.sun.xml.bind:jaxb-core')
-	//compile('com.sun.xml.bind:jaxb-impl')
+
+	compile("org.springframework:spring-tx")
+
+	implementation 'org.springframework.boot:spring-boot-starter-cache'
+	implementation 'net.sf.ehcache:ehcache'
 
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-mustache'
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.security:spring-security-test'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: '2.3.0.RELEASE'
+
 	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
 	runtimeOnly 'mysql:mysql-connector-java'
